@@ -14,17 +14,17 @@ Hardware requirements
 
 * A physical machine for the undercloud that can be accessed as root from the jump host
 * At least two other physical machines that will become controller and compute, for HA three controllers and one compute are needed
-* A working network link between overcloud and undercloud, typically the second net device of the undercloud will talk to the first net device of all the overcloud machines
+* A working network link between _overcloud_ and _undercloud_, typically the second net device of the undercloud will talk to the first net device of all the overcloud machines
 
 Software requirements
 
-* The tripleo-quickstart quickstart.sh script:
-    * A config file (i.e. ha.yml) containing all the customizations for the baremetal environment
+* The tripleo-quickstart `quickstart.sh` script:
+    * A config file (i.e. `ha.yml`) containing all the customizations for the baremetal environment
 * This set of files, dependent from the hardware:
-    * File undercloud-provisioning.sh - optional, name is not important
-    * File network-environment.yaml - mandatory
-    * Directory nic-configs - mandatory if declared inside the resource_registry section in network-environment.yaml and must contain all the needed files
-    * File instackenv.json - mandatory, must contain the ipmi credentials for the nodes
+    * File `undercloud-provisioning.sh` - optional, name is not important
+    * File `network-environment.yaml` - mandatory
+    * Directory `nic-configs` - mandatory if declared inside the **resource_registry** section in `network-environment.yaml` and must contain all the needed files
+    * File `instackenv.json` - mandatory, must contain the IPMI credentials for the nodes
 
 Role Variables
 --------------
@@ -137,17 +137,17 @@ Some notes about the main task file:
 
 This is basically what the specific tasks does:
 
-* **machine-provisioning.yml** provides the machine and make it become both virthost/undercloud 
-* **machine-setup.yml** prepares the undercloud with ssh connections, users, sudoers and inventory addition
-* **undercloud-scripts.yml** copies all the needed scripts into virthost/undercloud
-* **undercloud-pre-install.yml** selinux, firewall, repositories and packages 
-* **undercloud-install.yml** installs the undercloud
-* **overcloud-images.yml** retrieves the overcloud images
+* `machine-provisioning.yml` provides the machine and make it become both virthost/undercloud 
+* `machine-setup.yml` prepares the undercloud with ssh connections, users, sudoers and inventory addition
+* `undercloud-scripts.yml` copies all the needed scripts into virthost/undercloud
+* `undercloud-pre-install.yml` selinux, firewall, repositories and packages 
+* `undercloud-install.yml` installs the undercloud
+* `overcloud-images.yml` retrieves the overcloud images
 
 Dependencies
 ------------
 
-If you don't need to change anything in how the environments gets deployed, then all the dependencies should be satisfied by the default requirements.txt file.
+If you don't need to change anything in how the environments gets deployed, then all the dependencies should be satisfied by the default `requirements.txt` file.
 
 In any case the roles you will need to deploy an entire environment from scratch (see @Example Playbook) are:
 
@@ -224,7 +224,7 @@ Then you can invoke *quickstart.sh* like this:
 
 Basically this command:
 
-* Uses the playbook **baremetal-undercloud.yml**
+* Uses the playbook `baremetal-undercloud.yml`
 * Uses a custom workdir that is rebuilt from scratch (so if it already exists, it is dropped)
 * Performs all the tasks in the playbook
 * Chooses release (liberty, mitaka or “master” for newton)
